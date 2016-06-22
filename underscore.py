@@ -8,13 +8,23 @@
 
 
 class Underscore(object):
-    def filter(self, a):
+    def filter(self, a, callback):
         b = []
-        for i in a:
-            if i % 2 == 0:
-                b.append(i)
-        print(b)
+        for data in a:
+            if callback(data) == True:
+                b.append(data)
+        return b
 
+    def map(self, a, callback):
+        b = []
+        for data in a:
+                b.append(callback(data))
+        return b
 
 _ = Underscore()
-_.filter([1, 2, 3, 4, 5])
+
+Filter1 = _.filter([1, 2, 3, 4, 5, 6], lambda x: x % 2 == 0)
+print Filter1
+
+Map1 = _.map([1, 2, 3, 4, 5, 6], lambda x: x * 2)
+print Map1
