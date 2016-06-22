@@ -21,6 +21,14 @@ class Underscore(object):
                 b.append(callback(data))
         return b
 
+    def find(self, a, callback):
+        b = []
+        for data in a:
+            if callback(data) == True:
+                b.append(data)
+        return [b[1]]
+
+
 _ = Underscore()
 
 Filter1 = _.filter([1, 2, 3, 4, 5, 6], lambda x: x % 2 == 0)
@@ -28,3 +36,6 @@ print Filter1
 
 Map1 = _.map([1, 2, 3, 4, 5, 6], lambda x: x * 2)
 print Map1
+
+Find1 = _.find([1, 2, 3, 4, 5, 6], lambda x: x % 2 == 0)
+print Find1
