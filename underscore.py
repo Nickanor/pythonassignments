@@ -28,6 +28,20 @@ class Underscore(object):
                 b.append(data)
         return [b[1]]
 
+    def reject(self, a, callback):
+        b = []
+        for data in a:
+            if callback(data) == False:
+                b.append(data)
+        return b
+
+    def reduce(self, a):
+        sum = 0
+        for i in a:
+            sum = sum + i
+        print(sum)
+
+
 
 _ = Underscore()
 
@@ -39,3 +53,9 @@ print Map1
 
 Find1 = _.find([1, 2, 3, 4, 5, 6], lambda x: x % 2 == 0)
 print Find1
+
+Reject1 = _.reject([1, 2, 3, 4, 5, 6], lambda x: x % 2 == 0)
+print Reject1
+
+Reduce1 = _.reduce([1, 2, 3, 4, 5, 6])
+print Reduce1
